@@ -1,13 +1,22 @@
+import {motion} from 'framer-motion'
+import { leaf, leafWrapper } from '../varaints'
+
 type LeafType = {
   className: string,
-  imageUrl: string
+  imageUrl: string,
+  animationSpeed: number
 }
 
-const Leaf = ({ className, imageUrl }: LeafType) => {
+const Leaf = ({ className, imageUrl, animationSpeed }: LeafType) => {
   return (
-    <div className={className}>
-      <img src={imageUrl} className="leaf" />
-    </div>
+    <motion.div 
+    variants={leafWrapper}
+    className={className}>
+      <motion.img 
+      custom={animationSpeed}
+      variants={leaf}
+      src={imageUrl} className="leaf" />
+    </motion.div>
   )
 }
 
